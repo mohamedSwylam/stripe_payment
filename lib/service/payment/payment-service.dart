@@ -20,7 +20,7 @@ class StripeService {
     'Content-Type': 'application/x-www-form-urlencoded'
   };
   static init() {
-    Stripe.publishableKey = 'pk_test_EYFzViclTJlQjgVjGSA4ND7k00wUh0e1tK';
+    Stripe.publishableKey = 'pk_test_51Kc85hHQzMPK5sWEUUNeBXQNl6pyrqSDrJpaZ2ndO1jGSp9INyPEIvGCdOPLrZx8WroJCiz7nFVFfUd5GjT2nUaj00TCDLmfNk';
 
     // StripePayment.setOptions(
     //     StripeOptions(
