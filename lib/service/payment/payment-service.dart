@@ -9,7 +9,7 @@ class StripeService {
   static String secret =
       'sk_test_51Kc85hHQzMPK5sWEriyOzwhAjVMpw8UZlygCAZT6y1YF6KJngVblHJj5g4OhOuC6rOcBhL9C4aikkVTUzlWby55M00R5pKEJ02';
   static Map<String, String> headers = {
-    'Authorization': 'Bearer${StripeService.secret}',
+    'Authorization': 'Bearer ${StripeService.secret}',
     'Content-Type': 'application/x-www-form-urlencoded',
   };
   static Map<String, dynamic>? paymentIntentData;
@@ -19,7 +19,7 @@ class StripeService {
         'pk_test_51Kc85hHQzMPK5sWEUUNeBXQNl6pyrqSDrJpaZ2ndO1jGSp9INyPEIvGCdOPLrZx8WroJCiz7nFVFfUd5GjT2nUaj00TCDLmfNk';
   }
 
-  static Future<void> payWithNewCardPage(context) async {
+  static Future<void> payWithNewCard(context) async {
     try {
       paymentIntentData =
           await createPaymentIntent('20', 'USD'); //json.decode(response.body);

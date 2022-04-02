@@ -5,7 +5,8 @@ import 'package:stripe_payment/screens/pay_with_new_card.dart';
 import 'package:stripe_payment/service/payment/payment-service.dart';
 
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   StripeService.init();
   runApp(MyApp());
 }
