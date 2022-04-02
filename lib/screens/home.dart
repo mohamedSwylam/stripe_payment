@@ -11,7 +11,7 @@ class _HomePageState extends State<HomePage> {
   onItemPress(BuildContext context, int index) async {
     switch(index) {
       case 0:
-        Navigator.pushNamed(context, '/pay-with-new-card');
+        StripeService.payWithNewCardPage(context);
         break;
       case 1:
         Navigator.pushNamed(context, '/existing-cards');

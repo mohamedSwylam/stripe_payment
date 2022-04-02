@@ -12,14 +12,14 @@ class StripeService {
     'Authorization': 'Bearer${StripeService.secret}',
     'Content-Type': 'application/x-www-form-urlencoded',
   };
-  Map<String, dynamic>? paymentIntentData;
+  static Map<String, dynamic>? paymentIntentData;
 
   static init() {
     Stripe.publishableKey =
         'pk_test_51Kc85hHQzMPK5sWEUUNeBXQNl6pyrqSDrJpaZ2ndO1jGSp9INyPEIvGCdOPLrZx8WroJCiz7nFVFfUd5GjT2nUaj00TCDLmfNk';
   }
 
-  Future<void> PayWithNewCardPage(context) async {
+  static Future<void> payWithNewCardPage(context) async {
     try {
       paymentIntentData =
           await createPaymentIntent('20', 'USD'); //json.decode(response.body);
@@ -44,7 +44,7 @@ class StripeService {
     }
   }
 
-  displayPaymentSheet(context) async {
+  static displayPaymentSheet(context) async {
     try {
       await Stripe.instance
           .presentPaymentSheet(
@@ -79,7 +79,7 @@ class StripeService {
   }
 
 //  Future<Map<String, dynamic>>
-  createPaymentIntent(String amount, String currency) async {
+  static createPaymentIntent(String amount, String currency) async {
     try {
       Map<String, dynamic> body = {
         'amount': calculateAmount('20'),
@@ -98,7 +98,7 @@ class StripeService {
     }
   }
 
-  calculateAmount(String amount) {
+  static calculateAmount(String amount) {
     final a = (int.parse(amount)) * 100;
     return a.toString();
   }
