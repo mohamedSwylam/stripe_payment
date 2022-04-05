@@ -1,69 +1,66 @@
 import 'package:flutter/material.dart';
-import '../service/payment/payment-service.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
+void main() {
+  runApp(const MyApp());
 }
 
-class _HomePageState extends State<HomePage> {
-
-  onItemPress(BuildContext context, int index) async {
-    switch(index) {
-      case 0:
-        StripeService.payWithNewCard(context);
-        break;
-      case 1:
-        Navigator.pushNamed(context, '/existing-cards');
-        break;
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    StripeService.init();
-  }
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Dashboard(),
+    );
+  }
+}
+
+class Dashboard extends StatelessWidget {
+  const Dashboard({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: const Text('Paypal Payment'),
       ),
-      body: Container(
-        padding: EdgeInsets.all(20),
-        child: ListView.separated(
-            itemBuilder: (context, index) {
-              Icon icon = Icon(Icons.add_circle);
-              Text text = Text('');
-
-              switch(index) {
-                case 0:
-                  icon = Icon(Icons.add_circle, color: theme.primaryColor);
-                  text = Text('Pay via new card');
-                  break;
-                case 1:
-                  icon = Icon(Icons.credit_card, color: theme.primaryColor);
-                  text = Text('Pay via existing card');
-                  break;
-              }
-
-              return InkWell(
-                onTap: () {
-                  onItemPress(context, index);
-                },
-                child: ListTile(
-                  title: text,
-                  leading: icon,
-                ),
-              );
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: TextButton(
+            onPressed: () {
+              // lets assume that product price is 5.99 usd
+             /* Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PaypalPayment(
+                      amount: 5.99,
+                      currency: 'USD',
+                    ),
+                  ));*/
             },
-            separatorBuilder: (context, index) => Divider(
-              color: theme.primaryColor,
+            style: ButtonStyle(
+              backgroundColor:
+              MaterialStateProperty.resolveWith((states) => Colors.blue),
             ),
-            itemCount: 2
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Image(
+                  image: NetworkImage('https://raw.githubusercontent.com/ManthanSutariya11/flutter_paypal_payment/master/frontend/paypalfrontend/assets/paypal.png'),
+                  height: 40,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  'Pay with Paypal',
+                  style: TextStyle(color: Colors.black),
+                )
+              ],
+            ),
+          ),
         ),
       ),
     );

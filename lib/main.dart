@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stripe_payment/screens/existing-cards.dart';
-import 'package:stripe_payment/screens/home.dart';
+import 'package:stripe_payment/screens/stripe.dart';
 import 'package:stripe_payment/screens/pay_with_new_card.dart';
 import 'package:stripe_payment/service/payment/payment-service.dart';
 

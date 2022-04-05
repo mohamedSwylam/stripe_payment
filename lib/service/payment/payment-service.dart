@@ -2,7 +2,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
-
+class StripeTransactionResponse {
+  String message;
+  bool success;
+  StripeTransactionResponse({required this.message, required this.success});
+}
+class CreditCard {}
 class StripeService {
   static String apiBase = 'https://api.stripe.com/v1';
   static Uri paymentApiUrl = Uri.parse('https://api.stripe.com/v1/payment_intents');
@@ -46,8 +51,7 @@ class StripeService {
 
   static displayPaymentSheet(context) async {
     try {
-      await Stripe.instance
-          .presentPaymentSheet(
+      await Stripe.instance.presentPaymentSheet(
               parameters: PresentPaymentSheetParameters(
         clientSecret: paymentIntentData!['client_secret'],
         confirmPayment: true,
@@ -102,4 +106,5 @@ class StripeService {
     final a = (int.parse(amount)) * 100;
     return a.toString();
   }
+
 }
