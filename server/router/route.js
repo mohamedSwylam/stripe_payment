@@ -7,7 +7,7 @@ const queryString = require("query-string");
 paypal.configure({
     'mode': 'sandbox',
     'client_id': 'AZRkSPpCDYV0TJXggKPl7KdH-4H5jZ5UFmHWG7vhRrJ9TSZofG1XPfTZ1EHOC94VgYB7U1qg_-rBwVX7',
-    'client_secret': 'EHpjUuna4C_LlZ5nhd0n45_gkcxa-GcWKLucZBlVUYotWZjDuM30ruxAEBzsWAxWjI68KX_GGuZDR_rC',
+    'client_secret': 'EHpjUuna4C_LlZ5nhd0n45_gkcxa-GcWKLucZBlVUYotWZjDuM30ruxAEBzsWAxWjI68KX_GGuZDR_rC'
 });
 
 route.get('/createpaypalpayment', async (req, res) => {
@@ -23,7 +23,7 @@ route.get('/createpaypalpayment', async (req, res) => {
         /// "https://us-central1-paypal.cloudfunctions.net/paypalTestPaymentExecute",
         /// 
         "redirect_urls": {
-            "return_url": `http://localhost:3000/execute`,
+            "return_url": `http://localhost:3000/execute?amount=${amount}&currency=${currency}`,
             "cancel_url": "http://cancel.url"
         },
         "transactions": [{
@@ -86,4 +86,4 @@ route.get('/execute', async (req, res) => {
 });
 
 
-module.exports = route; 
+module.exports = route;
