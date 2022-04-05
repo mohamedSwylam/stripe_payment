@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stripe_payment/screens/payment_paypal.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -19,14 +20,14 @@ class Dashboard extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   // lets assume that product price is 5.99 usd
-                 /* Navigator.push(
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const PaypalPayment(
                           amount: 5.99,
                           currency: 'USD',
                         ),
-                      ));*/
+                      ));
                 },
                 style: ButtonStyle(
                   backgroundColor:
