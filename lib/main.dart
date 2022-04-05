@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stripe_payment/screens/existing-cards.dart';
+import 'package:stripe_payment/screens/home.dart';
 import 'package:stripe_payment/screens/stripe.dart';
 import 'package:stripe_payment/screens/pay_with_new_card.dart';
 import 'package:stripe_payment/service/payment/payment-service.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: Dashboard(),
       routes: <String, WidgetBuilder> {
         '/existing-cards': (BuildContext context) => ExistingCardsPage(key:  Key('ExistingCardPage')),
         '/pay-with-new-card': (BuildContext context) => PayWithNewCardPage(key:  Key('PayWithNewCardPage'))
